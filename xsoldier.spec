@@ -8,6 +8,7 @@ Release:	23
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://www.surfline.ne.jp/hachi/xsoldier/%{name}-%{version}.tar.gz
+# Source0-md5:	63f7ef2cd4de43524486b48c0f097553
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-securityfix.patch
