@@ -7,7 +7,7 @@ License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://www.surfline.ne.jp/hachi/xsoldier/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
-Source2:	%{name}.xpm
+Source2:	%{name}.png
 Patch0:		%{name}-securityfix.patch
 Patch1:		%{name}-xf4.patch
 Patch2:		%{name}-font.patch
@@ -42,13 +42,13 @@ xmkmf -a
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_applnkdir}/Games/Arcade,%{_pixmapsdir}}
 
 %{__make} PIXMAPDIR=$RPM_BUILD_ROOT%{_datadir}/xsoldier \
 	SCOREDIR=$RPM_BUILD_ROOT/var/games \
 	SCOREFILE=xsoldier.scores \
 	BINDIR=$RPM_BUILD_ROOT%{_bindir} install
 
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Games,%{_pixmapsdir}}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Games
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
@@ -62,5 +62,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(2755,root,games) %{_bindir}/xsoldier
 %{_datadir}/xsoldier
 %attr(664,root,games) %config(noreplace) %verify(not size mtime md5) /var/games/xsoldier.scores
-%{_pixmapsdir}/xsoldier.xpm
-%{_applnkdir}/Games/xsoldier.desktop
+%{_pixmapsdir}/*
+%{_applnkdir}/Games/Arcade/xsoldier.desktop
