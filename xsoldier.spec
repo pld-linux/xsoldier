@@ -14,6 +14,7 @@ Patch0:		%{name}-securityfix.patch
 Patch1:		%{name}-xf4.patch
 Patch2:		%{name}-font.patch
 URL:		http://www.surfline.ne.jp/hachi/xsoldier.html
+BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
