@@ -6,7 +6,7 @@ License:	GPL
 Group:		X11/Games
 Group(pl):	X11/Gry
 URL:		http://www.surfline.ne.jp/hachi/xsoldier.html
-Source0:	http://www.surfline.ne.jp/hachi/xsoldier/%{name}-%{version}.tar.bz2
+Source0:	http://www.surfline.ne.jp/hachi/xsoldier/%{name}-%{version}.tar.gz
 Source1:	%{name}
 Source2:	%{name}.xpm
 Source3:	%{name}-icons.tar.bz2
