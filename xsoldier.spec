@@ -25,7 +25,7 @@ graphics, but there's no sound support yet.
 
 %build
 xmkmf -a
-make CDEBUGFLAGS="${RPM_OPT_FLAGS}" \
+%{__make} CDEBUGFLAGS="${RPM_OPT_FLAGS}" \
        PIXMAPDIR=/usr/lib/games/xsoldier \
         SCOREDIR=/var/lib/games \
        SCOREFILE=xsoldier.scores \
@@ -34,7 +34,7 @@ make CDEBUGFLAGS="${RPM_OPT_FLAGS}" \
 %install
 rm -fr $RPM_BUILD_ROOT
 
-make PIXMAPDIR=${RPM_BUILD_ROOT}/usr/lib/games/xsoldier \
+%{__make} PIXMAPDIR=${RPM_BUILD_ROOT}/usr/lib/games/xsoldier \
       SCOREDIR=${RPM_BUILD_ROOT}/var/lib/games \
      SCOREFILE=xsoldier.scores \
         BINDIR=${RPM_BUILD_ROOT}/usr/games install
