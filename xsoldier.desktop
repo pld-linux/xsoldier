@@ -7,4 +7,5 @@ Icon=xsoldier.png
 Exec=xsoldier
 Type=Application
 Terminal=false
+Categories=Game;ArcadeGame;
 # vi: encoding=utf-8
