@@ -7,17 +7,17 @@ Version:	0.96
 Release:	23
 License:	GPL
 Group:		X11/Applications/Games
-Source0:	http://www.surfline.ne.jp/hachi/xsoldier/%{name}-%{version}.tar.gz
+# TODO: update to existing version
+Source0:	http://www.interq.or.jp/libra/oohara/xsoldier/%{name}-%{version}.tar.gz
 # Source0-md5:	63f7ef2cd4de43524486b48c0f097553
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-securityfix.patch
 Patch1:		%{name}-xf4.patch
 Patch2:		%{name}-font.patch
-URL:		http://www.surfline.ne.jp/hachi/xsoldier.html
+URL:		http://www.interq.or.jp/libra/oohara/xsoldier/
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 Great little shoot 'em up game in the style of galaga. Very neat
@@ -45,22 +45,24 @@ recordes. Ainda não tem som.
 
 %build
 xmkmf -a
-%{__make} CDEBUGFLAGS="%{rpmcflags}" \
+%{__make} all \
+	CDEBUGFLAGS="%{rpmcflags}" \
 	PIXMAPDIR=%{_datadir}/xsoldier \
 	SCOREDIR=/var/games \
 	SCOREFILE=xsoldier.scores \
-	BINDIR=%{_bindir} all
+	BINDIR=%{_bindir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Games/Arcade,%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
-%{__make} PIXMAPDIR=$RPM_BUILD_ROOT%{_datadir}/xsoldier \
+%{__make} install \
+	PIXMAPDIR=$RPM_BUILD_ROOT%{_datadir}/xsoldier \
 	SCOREDIR=$RPM_BUILD_ROOT/var/games \
 	SCOREFILE=xsoldier.scores \
-	BINDIR=$RPM_BUILD_ROOT%{_bindir} install
+	BINDIR=$RPM_BUILD_ROOT%{_bindir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Games/Arcade
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
@@ -74,4 +76,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xsoldier
 %attr(664,root,games) %config(noreplace) %verify(not size mtime md5) /var/games/xsoldier.scores
 %{_pixmapsdir}/*
-%{_applnkdir}/Games/Arcade/xsoldier.desktop
+%{_desktopdir}/xsoldier.desktop
