@@ -17,8 +17,6 @@ URL:		http://www.surfline.ne.jp/hachi/xsoldier.html
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 Great little shoot 'em up game in the style of galaga. Very neat
