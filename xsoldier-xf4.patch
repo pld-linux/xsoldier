@@ -1,0 +1,11 @@
+--- Imakefile	Fri Feb 28 09:48:57 1997
++++ Imakefile.xf4	Tue May 23 21:50:11 2000
+@@ -85,7 +85,7 @@
+ 
+ OBJS = $(SRCS:.c=.o)
+ 
+-ComplexProgramTarget(xsoldier)
++ComplexProgramTargetNoMan(xsoldier)
+ 
+ install:: install.pixmap install.score install.bin
+ 

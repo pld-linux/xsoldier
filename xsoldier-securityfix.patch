@@ -1,0 +1,62 @@
+--- xsoldier-0.96/main.c.chmou	Wed May 17 16:25:44 2000
++++ xsoldier-0.96/main.c	Wed May 17 16:25:50 2000
+@@ -129,14 +129,14 @@
+         argv0++;
+     else
+         argv0 = argv[0];
+-    strcpy(command,argv0); /*** コマンド名取得とコピー ***/
++    strncpy(command,argv0, sizeof(command)-1); /*** コマンド名取得とコピー ***/
+ 
+     for (i=1; i<argc; i++)
+     {
+ 	if ((strcmp(argv[i],"-display")==0) || (strcmp(argv[i],"-d")==0))
+ 	{
+ 	    if (i < argc-1)
+-		strcpy(display,argv[i+1]);
++		strncpy(display,argv[i+1],sizeof(display)-1);
+ 	}
+         else if ((strcmp(argv[i],"-wait")==0) || (strcmp(argv[i],"-w")==0))
+ 	{
+--- xsoldier-0.96/manage.c.chmou	Wed May 17 16:25:44 2000
++++ xsoldier-0.96/manage.c	Wed May 17 16:25:50 2000
+@@ -306,7 +306,10 @@
+     if ((pw=getpwuid(getuid())) == NULL)
+         sprintf(name,"%d",getuid());
+     else
+-        strcpy(name,pw->pw_name);
++    {
++        strncpy(name,pw->pw_name,sizeof(name));
++        name[sizeof(name)-1]= '\0';   
++    }
+ 
+     New = (PlayerData *)malloc(sizeof(PlayerData));
+ 
+--- xsoldier-0.96/score.c.chmou	Wed May 17 16:25:44 2000
++++ xsoldier-0.96/score.c	Wed May 17 16:25:50 2000
+@@ -53,7 +53,7 @@
+ 	    p->Rec[i].score = score;
+ 	    p->Rec[i].loop  = loop;
+ 	    p->Rec[i].stage = stage;
+-	    strcpy(p->Rec[i].name,name);
++	    strncpy(p->Rec[i].name,name,sizeof(p->Rec[i].name));
+ 	}
+ 	fclose(fp);
+     }
+@@ -92,7 +92,7 @@
+ 	    p->Rec[i].score = p->Rec[i-1].score;
+ 	    p->Rec[i].loop  = p->Rec[i-1].loop;
+ 	    p->Rec[i].stage = p->Rec[i-1].stage;
+-	    strcpy(p->Rec[i].name,p->Rec[i-1].name);
++	    strncpy(p->Rec[i].name,p->Rec[i-1].name,sizeof(p->Rec[i].name));
+ 	}
+ #ifdef DEBUG	
+ 	printf("rank[%d] <- rank[0]\n",rank);
+@@ -100,7 +100,7 @@
+ 	p->Rec[rank].score = p->Rec[0].score;
+ 	p->Rec[rank].loop  = p->Rec[0].loop;
+ 	p->Rec[rank].stage = p->Rec[0].stage;
+-	strcpy(p->Rec[rank].name,p->Rec[0].name);
++	strncpy(p->Rec[rank].name,p->Rec[0].name,sizeof(p->Rec[rank].name));
+ 
+ 	return rank;
+     }

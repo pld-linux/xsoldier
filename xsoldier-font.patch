@@ -1,0 +1,11 @@
+--- xsoldier-0.96/main.c.orig	Sat Nov  3 20:24:16 2001
++++ xsoldier-0.96/main.c	Sat Nov  3 20:21:20 2001
+@@ -239,7 +239,7 @@
+ 
+     WorkPixmap = XCreatePixmap(dpy,win,FieldW,FieldH,DefaultDepth(dpy,0));
+ 
+-    font       = XLoadFont(dpy,"-adobe-helvetica-bold-r-normal--12-120-75-75-p-70-iso8859-1");
++    font       = XLoadFont(dpy,"-adobe-utopia-bold-r-normal--12-*-*-*-*-*-*-*");
+     FontGC     = XCreateGC(dpy,root,0,0);
+     XSetGraphicsExposures(dpy,FontGC,False);
+     XSetForeground(dpy,FontGC,white.pixel);

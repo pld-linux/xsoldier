@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=xsoldier
+Comment=Shoot'em up game
+Exec=/usr/games/xsoldier
+Icon=xsoldier.xpm
+Type=Application
+Terminal=0
