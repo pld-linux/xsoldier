@@ -5,5 +5,5 @@ Comment[pl]=Strzelanina pod X Window System
 Icon=xsoldier.png
 Exec=xsoldier
 Type=Application
-Terminal=0
+Terminal=false
 # vi: encoding=utf-8
