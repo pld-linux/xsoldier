@@ -83,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc CONDITION COPYING ChangeLog.jp README.1st README.joystick README.score
 %doc scorefile.txt
 %defattr(-,root,root)
-%attr(2711, games, games) /usr/games/xsoldier
+%attr(2711, root, games) /usr/games/xsoldier
 %{_libdir}/games/xsoldier
 %ghost %attr(0660, games, games) /var/lib/games/xsoldier.scores
 %{_libdir}/menu/*
