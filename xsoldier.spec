@@ -2,7 +2,7 @@ Summary:	Shooting game on X Window System
 Summary(pl):	Strzelanina pod X Window System
 Name:		xsoldier
 Version:	0.96
-Release:	21
+Release:	22
 License:	GPL
 Group:		X11/Applications/Games
 Source0:	http://www.surfline.ne.jp/hachi/xsoldier/%{name}-%{version}.tar.gz
@@ -60,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README*.gz
-%lang(jp) %doc ChangeLog.jp.gz
+%lang(ja) %doc ChangeLog.jp.gz
 %attr(2755,root,games) %{_bindir}/xsoldier
 %{_datadir}/xsoldier
 %attr(664,root,games) %config(noreplace) %verify(not size mtime md5) /var/games/xsoldier.scores
