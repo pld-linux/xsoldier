@@ -3,20 +3,19 @@ Summary(es):	Spaceship vertical-scrolling shooting game for X
 Summary(pl):	Strzelanina pod X Window System
 Summary(pt_BR):	Jogo de nave-espacial-que-atira-e-voa-pra-cima-na-tela, para X
 Name:		xsoldier
-Version:	0.96
-Release:	23
+Version:	1.3
+Release:	1
 License:	GPL
 Group:		X11/Applications/Games
-# TODO: update to existing version
 Source0:	http://www.interq.or.jp/libra/oohara/xsoldier/%{name}-%{version}.tar.gz
-# Source0-md5:	63f7ef2cd4de43524486b48c0f097553
+# Source0-md5:	0b96ea5aa2ae74fbee17277d9dac1e59
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-securityfix.patch
-Patch1:		%{name}-xf4.patch
-Patch2:		%{name}-font.patch
+Patch0:		%{name}-make.patch
 URL:		http://www.interq.or.jp/libra/oohara/xsoldier/
-BuildRequires:	XFree86-devel
+BuildRequires:	SDL_image-devel
+BuildRequires:	autoconf >= 2.52
+BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,27 +39,23 @@ recordes. Ainda não tem som.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p0
-%patch2 -p1
 
 %build
-xmkmf -a
-%{__make} all \
-	CDEBUGFLAGS="%{rpmcflags}" \
-	PIXMAPDIR=%{_datadir}/xsoldier \
-	SCOREDIR=/var/games \
-	SCOREFILE=xsoldier.scores \
-	BINDIR=%{_bindir}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+%configure \
+	--with-sdl
+
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
-	PIXMAPDIR=$RPM_BUILD_ROOT%{_datadir}/xsoldier \
-	SCOREDIR=$RPM_BUILD_ROOT/var/games \
-	SCOREFILE=xsoldier.scores \
-	BINDIR=$RPM_BUILD_ROOT%{_bindir}
+	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -68,12 +63,17 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%triggerun -- xsoldier < 1.0
+mv -f /var/games/xsoldier.scores /var/games/xsoldier/xsoldier.scores 2>/dev/null
+exit 0
+
 %files
 %defattr(644,root,root,755)
-%doc README*
-%lang(ja) %doc ChangeLog.jp
+%doc ChangeLog LICENSE README
 %attr(2755,root,games) %{_bindir}/xsoldier
 %{_datadir}/xsoldier
-%attr(664,root,games) %config(noreplace) %verify(not size mtime md5) /var/games/xsoldier.scores
+%dir /var/games/xsoldier
+%attr(664,root,games) %config(noreplace) %verify(not size mtime md5) /var/games/xsoldier/xsoldier.scores
+%{_mandir}/man6/xsoldier.6*
 %{_pixmapsdir}/*
 %{_desktopdir}/xsoldier.desktop
