@@ -1,7 +1,9 @@
 [Desktop Entry]
 Name=xsoldier
 Comment=Shoot'em up game
-Exec=/usr/games/xsoldier
-Icon=xsoldier.xpm
+Comment[pl]=Strzelanina pod X Window System
+Icon=xsoldier.png
+Exec=xsoldier
 Type=Application
 Terminal=0
+# vi: encoding=utf-8
