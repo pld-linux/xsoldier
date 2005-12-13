@@ -73,7 +73,7 @@ exit 0
 %attr(2755,root,games) %{_bindir}/xsoldier
 %{_datadir}/xsoldier
 %dir /var/games/xsoldier
-%attr(664,root,games) %config(noreplace) %verify(not size mtime md5) /var/games/xsoldier/xsoldier.scores
+%attr(664,root,games) %config(noreplace) %verify(not md5 mtime size) /var/games/xsoldier/xsoldier.scores
 %{_mandir}/man6/xsoldier.6*
 %{_pixmapsdir}/*
 %{_desktopdir}/xsoldier.desktop
