@@ -1,14 +1,6 @@
---- xsoldier-1.3/Makefile.am.orig	2002-04-23 20:26:03.000000000 +0200
-+++ xsoldier-1.3/Makefile.am	2004-04-12 16:54:37.477146120 +0200
-@@ -57,26 +57,24 @@
- #CC_WARNINGS = -Wall -Wtraditional -Wshadow -Wpointer-arith -Wcast-qual \
- #  -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes \
- #  -Wmissing-declarations -Wnested-externs -Winline -pedantic
--CC_OPTIMIZE = -O2
- CPPFLAGS = -DDATADIR=\"$(datadir)\" \
-   -DLOCALSTATEDIR=\"$(localstatedir)\"
--CFLAGS = $(X_CFLAGS) $(SDL_CFLAGS) $(CC_WARNINGS) $(CC_OPTIMIZE)
-+CFLAGS = @CFLAGS@ $(X_CFLAGS) $(SDL_CFLAGS) $(CC_WARNINGS)
+--- xsoldier-1.4/Makefile.am~	2007-02-01 14:42:07.000000000 +0100
++++ xsoldier-1.4/Makefile.am	2007-02-01 14:46:42.000000000 +0100
+@@ -65,9 +65,8 @@
  
  install-exec-local:
  # install pixmap
@@ -18,11 +10,9 @@
 +	$(mkinstalldirs) $(DESTDIR)$(datadir)/xsoldier
 +	$(INSTALL_DATA) pixmap/*.xpm $(DESTDIR)$(datadir)/xsoldier
  # install score file
--	$(mkinstalldirs) $(DESTDIR)$(localstatedir)/games/xsoldier/
-+	$(mkinstalldirs) $(DESTDIR)$(localstatedir)/games/xsoldier
+ 	$(mkinstalldirs) $(DESTDIR)$(localstatedir)/games/xsoldier/
  	test -e $(DESTDIR)$(localstatedir)/games/xsoldier/xsoldier.scores \
-   || $(INSTALL_DATA) scorefile.txt \
-   $(DESTDIR)$(localstatedir)/games/xsoldier/xsoldier.scores
+@@ -76,8 +75,8 @@
  
  uninstall-local:
  # uninstall pixmap
@@ -33,8 +23,8 @@
  # uninstall score file
  	-rm -f $(DESTDIR)$(localstatedir)/games/xsoldier/xsoldier.scores
  	-rmdir $(DESTDIR)$(localstatedir)/games/xsoldier/
---- xsoldier-1.3/xsoldier.h.orig	2002-04-21 21:17:01.000000000 +0200
-+++ xsoldier-1.3/xsoldier.h	2004-04-12 16:52:42.249663360 +0200
+--- xsoldier-1.4/xsoldier.h~	2007-02-01 14:49:05.000000000 +0100
++++ xsoldier-1.4/xsoldier.h	2007-02-01 14:48:00.000000000 +0100
 @@ -33,8 +33,8 @@
  #define WAIT 35000
  #endif /* WAIT */
