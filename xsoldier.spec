@@ -1,7 +1,7 @@
 Summary:	Shooting game on X Window System
-Summary(es):	Spaceship vertical-scrolling shooting game for X
-Summary(pl):	Strzelanina pod X Window System
-Summary(pt_BR):	Jogo de nave-espacial-que-atira-e-voa-pra-cima-na-tela, para X
+Summary(es.UTF-8):   Spaceship vertical-scrolling shooting game for X
+Summary(pl.UTF-8):   Strzelanina pod X Window System
+Summary(pt_BR.UTF-8):   Jogo de nave-espacial-que-atira-e-voa-pra-cima-na-tela, para X
 Name:		xsoldier
 Version:	1.4
 Release:	1
@@ -22,19 +22,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Great little shoot 'em up game in the style of galaga. Very neat
 graphics, but there's no sound support yet.
 
-%description -l es
+%description -l es.UTF-8
 Spaceship vertical-scrolling shooting game for X, with nice graphics,
 3 types of shot, big boss at the end of each level and highscores. No
 sound yet.
 
-%description -l pl
-Niewielka gra typu "zestrzel wszystko co siê rusza" w stylu galagi.
-Przyjemna grafika, ale na razie bez d¼wiêku.
+%description -l pl.UTF-8
+Niewielka gra typu "zestrzel wszystko co siÄ™ rusza" w stylu galagi.
+Przyjemna grafika, ale na razie bez dÅºwiÄ™ku.
 
-%description -l pt_BR
+%description -l pt_BR.UTF-8
 Jogo de nave-espacial-que-atira-e-voa-pra-cima-na-tela, para X, com
-gráficos legais, 3 tipos de tiro, chefão no final do cada fase e
-recordes. Ainda não tem som.
+grÃ¡ficos legais, 3 tipos de tiro, chefÃ£o no final do cada fase e
+recordes. Ainda nÃ£o tem som.
 
 %prep
 %setup -q
