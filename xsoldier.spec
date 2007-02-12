@@ -1,7 +1,7 @@
 Summary:	Shooting game on X Window System
-Summary(es.UTF-8):   Spaceship vertical-scrolling shooting game for X
-Summary(pl.UTF-8):   Strzelanina pod X Window System
-Summary(pt_BR.UTF-8):   Jogo de nave-espacial-que-atira-e-voa-pra-cima-na-tela, para X
+Summary(es.UTF-8):	Spaceship vertical-scrolling shooting game for X
+Summary(pl.UTF-8):	Strzelanina pod X Window System
+Summary(pt_BR.UTF-8):	Jogo de nave-espacial-que-atira-e-voa-pra-cima-na-tela, para X
 Name:		xsoldier
 Version:	1.4
 Release:	1
