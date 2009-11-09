@@ -3,12 +3,12 @@ Summary(es.UTF-8):	Spaceship vertical-scrolling shooting game for X
 Summary(pl.UTF-8):	Strzelanina pod X Window System
 Summary(pt_BR.UTF-8):	Jogo de nave-espacial-que-atira-e-voa-pra-cima-na-tela, para X
 Name:		xsoldier
-Version:	1.4
+Version:	1.5
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://www.interq.or.jp/libra/oohara/xsoldier/%{name}-%{version}.tar.gz
-# Source0-md5:	aa27ed92314ccd73ce1cf43e8c7ebbf9
+# Source0-md5:	043263edc85f443777e1436a3d9a56a5
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-make.patch
@@ -74,5 +74,5 @@ exit 0
 %dir /var/games/xsoldier
 %attr(664,root,games) %config(noreplace) %verify(not md5 mtime size) /var/games/xsoldier/xsoldier.scores
 %{_mandir}/man6/xsoldier.6*
-%{_pixmapsdir}/*
+%{_pixmapsdir}/xsoldier.png
 %{_desktopdir}/xsoldier.desktop
