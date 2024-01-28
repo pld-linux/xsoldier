@@ -3,18 +3,20 @@ Summary(es.UTF-8):	Spaceship vertical-scrolling shooting game for X
 Summary(pl.UTF-8):	Strzelanina pod X Window System
 Summary(pt_BR.UTF-8):	Jogo de nave-espacial-que-atira-e-voa-pra-cima-na-tela, para X
 Name:		xsoldier
-Version:	1.5
+Version:	1.8
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://www.interq.or.jp/libra/oohara/xsoldier/%{name}-%{version}.tar.gz
-# Source0-md5:	043263edc85f443777e1436a3d9a56a5
+# Source0-md5:	f76c2e5465a1a2aca2286415b13b01a4
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-make.patch
+Patch1:		%{name}-format.patch
 URL:		http://www.interq.or.jp/libra/oohara/xsoldier/
+BuildRequires:	SDL-devel
 BuildRequires:	SDL_image-devel
-BuildRequires:	autoconf >= 2.52
+BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,6 +41,7 @@ recordes. Ainda não tem som.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal}
@@ -56,8 +59,8 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT

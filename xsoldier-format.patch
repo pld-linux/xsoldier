@@ -1,0 +1,11 @@
+--- xsoldier-1.8/manage.c.orig	2006-09-16 11:21:03.000000000 +0200
++++ xsoldier-1.8/manage.c	2024-01-28 21:13:29.106715560 +0100
+@@ -394,7 +394,7 @@ PlayerData *NewPlayerData(void)
+ 
+     New = (PlayerData *)malloc(sizeof(PlayerData));
+ 
+-    sprintf(New->Rec[0].name,name);
++    strcpy(name, New->Rec[0].name);
+     New->Rec[0].score = 0;
+     New->Rec[0].stage = 0;
+     New->Rec[0].loop = 0;
